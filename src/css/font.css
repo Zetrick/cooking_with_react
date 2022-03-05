@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'SmoochyBunsReg';
+  src: url('../fonts/SmoochSans-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SmoochyBunsBold';
+  src: url('../fonts/SmoochSans-SemiBold.ttf') format('truetype');
+  font-style: normal;
+}
