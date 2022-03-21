@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Ingredient(props) {
   return (
-    <div className="mt-1 flex items-center">
-      <span className="mr-4 text-lg font-medium text-red-800">{props.name}</span>
-      <span className="bg-red-100 px-1.5 py-0.5 text-sm font-light">{props.amount}</span>
+    <div className="grid grid-cols-2 gap-4">
+      <span className="flex items-center mr-4 text-lg font-medium text-rose-800 rounded-sm">{props.name}</span>
+      <span className="flex items-center justify-center py-2 text-sm font-light text-center bg-rose-100 rounded-sm">{props.amount}</span>
     </div>
   );
 }

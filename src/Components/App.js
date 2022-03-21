@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="flex h-screen bg-slate-200">
       <RecipeList recipes={sampleRecipes} />
-      <div className="w-1/2 bg-zinc-400 p-4 text-lg font-semibold tracking-wide text-zinc-50">
-        HI MOM
+      <div className="w-1/2 bg-slate-700 p-4 text-lg font-semibold tracking-wide text-zinc-50">
+        
       </div>
     </div>
   );
@@ -16,12 +16,13 @@ function App() {
 const sampleRecipes = [
   {
     id: 1,
-    name: "Plain Chicken",
+    name: "Plain Chicken with Catchetori Alfredo Sauce",
     servings: 3,
     cookTime: "1:45",
-    instructions: `1. Put salt on Chicken\n
-        2. Put chicken in oven\n
-        3. Eat the chicken`,
+    instructions: [
+      '1. Put salt on Chicken',
+      '2. Put chicken in oven',
+      '3. Eat the chicken' ],
     ingredients: [
       {
         name: "Chicken",
@@ -40,9 +41,10 @@ const sampleRecipes = [
     name: "Plain Pork",
     servings: 5,
     cookTime: "0:45",
-    instructions: `1. Put paprika on Pork\n
-        2. Put pork in oven\n
-        3. Eat the pork`,
+    instructions: [
+      '1. Put paprika on Pork',
+      '2. Put pork in oven',
+      '3. Eat the pork' ],
     ingredients: [
       {
         name: "Pork",

@@ -6,5 +6,5 @@ export default function IngredientList(props) {
     return <Ingredient key={ingredient.id} {...ingredient} />;
   });
 
-  return <div className="ml-2 mt-1 flex flex-col">{ingredientElements}</div>;
+  return <div className="mx-2 mt-1">{ingredientElements}</div>;
 }

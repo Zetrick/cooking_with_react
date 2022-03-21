@@ -4,16 +4,16 @@ import Recipe from "./Recipe";
 export default function RecipeList(props) {
   return (
     // LIST
-    <div className="flex w-1/2 flex-col p-8">
+    <div className="flex flex-col w-1/2 p-8">
       {/* RECIPE CARDS */}
       {props.recipes.map((recipe) => {
         return <Recipe key={recipe.id} {...recipe} />;
       })}
 
       {/* ADD RECIPE BUTTON */}
-      <div className="my-4 flex justify-center">
-        <button className="m-2 select-none rounded-md border border-slate-400 bg-sky-700 py-3 px-4 text-lg tracking-wider text-slate-50 shadow hover:opacity-90 hover:scale-105">
-          Add Recipe
+      <div className="flex justify-center my-4">
+        <button className="flex items-center justify-center w-14 h-14 p-4 m-2 font-mono text-5xl leading-8 tracking-wider text-center rounded-md shadow select-none bg-rose-400 text-slate-50 hover:opacity-90">
+          +
         </button>
       </div>
     </div>
