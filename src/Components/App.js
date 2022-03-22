@@ -4,10 +4,34 @@ import "../index.css";
 
 function App() {
   return (
-    <div className="flex h-screen bg-slate-200">
-      <RecipeList recipes={sampleRecipes} />
-      <div className="w-1/2 bg-slate-700 p-4 text-lg font-semibold tracking-wide text-zinc-50">
-        
+    <div className="absolute flex w-full h-full overflow-hidden">
+      <div className="w-1/2 overflow-auto">
+        <div className="absolute w-full">
+          <div className="h-36 bg-rose-100"></div>
+          <div className="h-36 bg-rose-200"></div>
+          <div className="h-36 bg-rose-300"></div>
+          <div className="h-36 bg-rose-400"></div>
+          <div className="h-36 bg-rose-500"></div>
+          <div className="h-36 bg-rose-600"></div>
+          <div className="h-36 bg-rose-700"></div>
+          <div className="h-36 bg-rose-800"></div>
+          <div className="h-36 bg-rose-900"></div>
+        </div>
+        <RecipeList recipes={sampleRecipes} />
+      </div>
+      <div className="w-1/2 overflow-auto">
+        <div className="absolute w-full">
+          <div className="h-36 bg-cyan-100"></div>
+          <div className="h-36 bg-cyan-200"></div>
+          <div className="h-36 bg-cyan-300"></div>
+          <div className="h-36 bg-cyan-400"></div>
+          <div className="h-36 bg-cyan-500"></div>
+          <div className="h-36 bg-cyan-600"></div>
+          <div className="h-36 bg-cyan-700"></div>
+          <div className="h-36 bg-cyan-800"></div>
+          <div className="h-36 bg-cyan-900"></div>
+        </div>
+        <RecipeList recipes={sampleRecipes} />
       </div>
     </div>
   );
@@ -19,20 +43,17 @@ const sampleRecipes = [
     name: "Plain Chicken with Catchetori Alfredo Sauce",
     servings: 3,
     cookTime: "1:45",
-    instructions: [
-      '1. Put salt on Chicken',
-      '2. Put chicken in oven',
-      '3. Eat the chicken' ],
+    instructions: ["Put salt on Chicken", "Put chicken in oven", "Eat the chicken"],
     ingredients: [
       {
         name: "Chicken",
         amount: "3lbs",
-        id: 1,
+        id: 4,
       },
       {
         name: "Salt",
         amount: "2 Tbsp",
-        id: 2,
+        id: 5,
       },
     ],
   },
@@ -41,20 +62,36 @@ const sampleRecipes = [
     name: "Plain Pork",
     servings: 5,
     cookTime: "0:45",
-    instructions: [
-      '1. Put paprika on Pork',
-      '2. Put pork in oven',
-      '3. Eat the pork' ],
+    instructions: ["Put paprika on Pork", "Put pork in oven", "Eat the pork"],
     ingredients: [
       {
         name: "Pork",
         amount: "5lbs",
-        id: 3,
+        id: 6,
       },
       {
         name: "Paprika",
         amount: "2 Tbsp",
-        id: 4,
+        id: 7,
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Plain Steak",
+    servings: 5,
+    cookTime: "0:45",
+    instructions: ["Put salt and pepper on Steak", "Put steak on grill", "Eat the steak"],
+    ingredients: [
+      {
+        name: "Steak",
+        amount: "2lbs",
+        id: 8,
+      },
+      {
+        name: "Paprika",
+        amount: "2 Tbsp",
+        id: 9,
       },
     ],
   },

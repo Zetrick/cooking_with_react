@@ -4,12 +4,12 @@ import IngredientList from "./IngredientList";
 export default function Recipe(props) {
   return (
     // CARD
-    <div className="px-6 py-4 mb-4 border rounded shadow-lg border-slate-300 bg-slate-50">
+    <div className="px-6 py-4 mb-8 border rounded shadow-lg border-slate-300 bg-slate-50">
       {/* CARD CONTENTS */}
-      <div className="flex justify-between mb-8">
+      <div className="flex justify-between mb-4">
         {/* TITLE */}
         <div className="w-1/2 border-b-2 border-slate-300">
-          <h3 className="w-full px-2 pb-2 text-2xl font-semibold tracking-wide text-slate-800">
+          <h3 className="w-full px-2 pb-1 text-2xl font-semibold tracking-wide text-slate-800">
             {props.name}
           </h3>
         </div>
@@ -27,38 +27,38 @@ export default function Recipe(props) {
         </div>
       </div>
 
-      <ul className="divide-y divide-dashed">
+      <div className="divide-y divide-dashed">
         {/* COOK TIME */}
-        <li className="py-3 border-slate-300">
+        <div className="py-3 border-slate-300">
           <span className="mr-2 text-lg font-semibold tracking-wide text-slate-800">
             Cook Time:
           </span>
           <span className="font-light">{props.cookTime}</span>
-        </li>
+        </div>
         {/* SERVINGS */}
-        <li className="py-3 border-slate-300">
+        <div className="py-3 border-slate-300">
           <span className="mr-2 text-lg font-semibold tracking-wide text-slate-800">Servings:</span>
           <span className="font-light">{props.servings}</span>
-        </li>
+        </div>
         {/* INSTRUCTIONS */}
-        <li className="py-3 border-slate-300">
+        <div className="py-3 border-slate-300">
           <span className="mr-2 text-lg font-semibold tracking-wide text-slate-800">
             Instructions:
           </span>
-          <div>{props.instructions.map((inst) => {
-            return <p className="ml-2 font-light">{inst}</p>
+          <div>{props.instructions.map((inst, ind) => {
+            return <p className="ml-2 font-light flex" key={ind}><span className="w-6">{ind+1}.</span>{inst}</p>
           })}</div>
-        </li>
+        </div>
         {/* INGREDIENTS LIST */}
-        <li className="py-3 mb-1 border-slate-300">
+        <div className="py-3 mb-1 border-slate-300">
           <span className="mr-2 text-lg font-semibold tracking-wide text-slate-800">
             Ingredients:
           </span>
           <div>
             <IngredientList ingredients={props.ingredients} />
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 }
