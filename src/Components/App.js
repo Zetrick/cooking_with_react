@@ -1,37 +1,29 @@
 import React from "react";
 import RecipeList from "./RecipeList";
+import Background from "./Background";
 import "../index.css";
+
+let a1 = 'first:border-t-amber-300'
+let c1 = 'first:border-t-cyan-300'
 
 function App() {
   return (
-    <div className="absolute flex w-full h-full overflow-hidden">
-      <div className="w-1/2 overflow-auto">
-        <div className="absolute w-full">
-          <div className="h-36 bg-rose-100"></div>
-          <div className="h-36 bg-rose-200"></div>
-          <div className="h-36 bg-rose-300"></div>
-          <div className="h-36 bg-rose-400"></div>
-          <div className="h-36 bg-rose-500"></div>
-          <div className="h-36 bg-rose-600"></div>
-          <div className="h-36 bg-rose-700"></div>
-          <div className="h-36 bg-rose-800"></div>
-          <div className="h-36 bg-rose-900"></div>
-        </div>
-        <RecipeList recipes={sampleRecipes} />
+    <div className="">
+      <div className="fixed flex w-full z-0">
+        <Background color="amber" />
+        <Background color="cyan" />
       </div>
-      <div className="w-1/2 overflow-auto">
-        <div className="absolute w-full">
-          <div className="h-36 bg-cyan-100"></div>
-          <div className="h-36 bg-cyan-200"></div>
-          <div className="h-36 bg-cyan-300"></div>
-          <div className="h-36 bg-cyan-400"></div>
-          <div className="h-36 bg-cyan-500"></div>
-          <div className="h-36 bg-cyan-600"></div>
-          <div className="h-36 bg-cyan-700"></div>
-          <div className="h-36 bg-cyan-800"></div>
-          <div className="h-36 bg-cyan-900"></div>
+      <div className="flex relative z-10">
+        <div className="w-1/2 h-screen">
+          <RecipeList color="amber" recipes={sampleRecipes} />
         </div>
-        <RecipeList recipes={sampleRecipes} />
+        <div className="relative">
+          <div className="fixed w-1/2 h-1/2 p-8 mx-auto">
+            <div className="bg-cyan-500 w-full h-full flex justify-center items-center border-2 border-cyan-300 rounded cursor-pointer hover:brightness-105">
+              <p className="text-6xl text-cyan-100 tracking-wider text-center leading-normal">EDIT RECIPE HERE</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -43,7 +35,11 @@ const sampleRecipes = [
     name: "Plain Chicken with Catchetori Alfredo Sauce",
     servings: 3,
     cookTime: "1:45",
-    instructions: ["Put salt on Chicken", "Put chicken in oven", "Eat the chicken"],
+    instructions: [
+      "Put salt on Chicken",
+      "Put chicken in oven",
+      "Eat the chicken",
+    ],
     ingredients: [
       {
         name: "Chicken",
@@ -81,7 +77,11 @@ const sampleRecipes = [
     name: "Plain Steak",
     servings: 5,
     cookTime: "0:45",
-    instructions: ["Put salt and pepper on Steak", "Put steak on grill", "Eat the steak"],
+    instructions: [
+      "Put salt and pepper on Steak",
+      "Put steak on grill",
+      "Eat the steak",
+    ],
     ingredients: [
       {
         name: "Steak",

@@ -2,9 +2,10 @@ import React from "react";
 import IngredientList from "./IngredientList";
 
 export default function Recipe(props) {
+
   return (
     // CARD
-    <div className="px-6 py-4 mb-8 border rounded shadow-lg border-slate-300 bg-slate-50">
+    <div className={`first:border-t-${props.color}-300 px-6 py-4 mb-8 rounded shadow-lg first:border-t-4 border-slate-300 bg-slate-50`}>
       {/* CARD CONTENTS */}
       <div className="flex justify-between mb-4">
         {/* TITLE */}
@@ -46,7 +47,7 @@ export default function Recipe(props) {
             Instructions:
           </span>
           <div>{props.instructions.map((inst, ind) => {
-            return <p className="ml-2 font-light flex" key={ind}><span className="w-6">{ind+1}.</span>{inst}</p>
+            return <p className="flex ml-2 font-light" key={ind}><span className="w-6">{ind+1}.</span>{inst}</p>
           })}</div>
         </div>
         {/* INGREDIENTS LIST */}
