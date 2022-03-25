@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import IngredientList from "./IngredientList";
+import { RecipeContext } from "./App";
 
 export default function Recipe(props) {
-
+  const value = useContext(RecipeContext);
   return (
     // CARD
     <div className={`first:border-t-${props.color}-300 px-6 py-4 mb-8 rounded shadow-lg first:border-t-4 border-slate-300 bg-slate-50`}>
@@ -21,7 +22,8 @@ export default function Recipe(props) {
             <button className="w-20 p-1 m-1 text-sm tracking-wider uppercase transition-all rounded select-none border-slate-300 bg-slate-300 text-slate-50 hover:bg-slate-400">
               Edit
             </button>
-              <button className="flex items-center justify-center w-8 h-8 p-3 ml-2 font-mono text-sm uppercase transition-all rounded-full select-none hover:bg-slate-200 text-slate-400">
+              <button className="flex items-center justify-center w-8 h-8 p-3 ml-2 font-mono text-sm uppercase transition-all rounded-full select-none hover:bg-slate-200 text-slate-400"
+              onClick={ () => value.handleRecipeDelete(props.id)}>
                 X
               </button>
           </div>
