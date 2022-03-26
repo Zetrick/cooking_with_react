@@ -1,19 +1,36 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import RecipeList from "./RecipeList";
+import RecipeEdit from "./RecipeEdit";
 import Background from "./Background";
 import "../index.css";
 
 export const RecipeContext = React.createContext();
 
-let a1 = "first:border-t-amber-300";
-let a2 = "first:border-t-amber-100";
-let c1 = "first:border-t-cyan-300";
+const LOCAL_STORAGE_KEY = "Cooking_With_React.Recipes";
+
+// first:border-t-amber-400
+// first:border-t-amber-100
+// first:border-t-cyan-400
 
 function App() {
   const [recipes, setRecipes] = useState(sampleRecipes);
 
-  
+  useEffect(() => {
+    console.log("All done rendering... calling the [] useEffect");
+    const recipesJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (recipesJSON) {
+      setRecipes(JSON.parse(recipesJSON));
+      console.log("Setting recipes from Local Storage...");
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("recipes array changed... Setting Local Storage to: ", recipes);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes));
+    return () => console.log("Recipes set!");
+  }, [recipes]);
+
   const handleRecipeAddFunc = () => {
     const newRecipe = {
       id: uuidv4(),
@@ -29,18 +46,18 @@ function App() {
         },
       ],
     };
-    
+
     setRecipes([...recipes, newRecipe]);
-  }
-  
+  };
+
   const handleRecipeDeleteFunc = (id_of_recipe) => {
-    setRecipes(recipes.filter( recipe => recipe.id !== id_of_recipe));
-  }
-  
+    setRecipes(recipes.filter((recipe) => recipe.id !== id_of_recipe));
+  };
+
   const recipeContextValue = {
     handleRecipeAdd: handleRecipeAddFunc,
-    handleRecipeDelete: handleRecipeDeleteFunc
-  }
+    handleRecipeDelete: handleRecipeDeleteFunc,
+  };
 
   return (
     <div className="">
@@ -53,7 +70,7 @@ function App() {
       {/* CONTAINER FOR RECIPE CARDS & EDIT SECTION */}
       <div className="relative z-10 flex">
         {/* RECIPE CARD CONTAINER */}
-        <div className="ml-8 h-screen w-5/12">
+        <div className="w-1/2">
           <RecipeContext.Provider value={recipeContextValue}>
             <RecipeList
               color="amber" //
@@ -63,16 +80,9 @@ function App() {
         </div>
         {/* EDIT SECTION CONTAINER */}
         {/* RELATIVE PARENT */}
-        <div className="relative flex items-center">
-          {/* FIXED CHILD */}
-          <div className="fixed ml-20 flex h-1/2 w-1/2 justify-center p-8">
-            {/* CONTENT */}
-            <div className="flex h-full w-1/2 cursor-pointer items-center justify-center rounded border-2 border-cyan-300 bg-cyan-500 hover:brightness-105">
-              <p className="text-center text-6xl leading-normal tracking-wider text-cyan-100">
-                EDIT RECIPE HERE
-              </p>
-            </div>
-          </div>
+        <div className="w-1/2 h-screen flex justify-center items-center">
+          {/* FIXED CHILD - RECIPE EDIT */}
+          <RecipeEdit />
         </div>
       </div>
     </div>

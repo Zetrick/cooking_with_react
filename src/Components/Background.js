@@ -6,7 +6,7 @@ export default function Background(props) {
   return (
     <div className="w-1/2">
       {colors_arr.map((color, ind) => {
-        return <div className={`h-40 -translate-x-10 w-[2000px] ${colors_arr[ind]} rotate-12 3xl:-translate-x-32 xl:-translate-y-24`} key={uuidv4()}></div>
+        return <div className={`h-40 ${colors_arr[ind]}`} key={uuidv4()}></div>
       })}
     </div>
   );

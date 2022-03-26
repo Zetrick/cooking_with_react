@@ -6,7 +6,7 @@ export default function RecipeList(props) {
   const value = useContext(RecipeContext);
   return (
     // LIST
-    <div className="mx-auto flex max-w-3xl flex-col px-6 py-8 pb-20">
+    <div className="flex max-w-3xl flex-col px-6 py-8 pb-20">
       {/* RECIPE CARDS */}
       {props.recipes.map((recipe, ind) => {
         return (

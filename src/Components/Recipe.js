@@ -6,7 +6,7 @@ export default function Recipe(props) {
   const value = useContext(RecipeContext);
   return (
     // CARD
-    <div className={`first:border-t-${props.color}-300 px-6 py-4 mb-8 rounded shadow-lg first:border-t-4 border-slate-300 bg-slate-50`}>
+    <div className={`first:border-t-${props.color}-400 px-6 py-4 mb-8 rounded shadow-lg first:border-t-4 border-slate-300 bg-slate-50`}>
       {/* CARD CONTENTS */}
       <div className="flex justify-between mb-4">
         {/* TITLE */}
