@@ -6,7 +6,7 @@ export default function Recipe(props) {
   const value = useContext(RecipeContext);
   return (
     // CARD
-    <div className={`first:border-t-${props.color}-400 px-6 py-4 mb-8 rounded shadow-lg first:border-t-4 border-slate-300 bg-slate-50`}>
+    <div className={`first:border-t-${props.color}-400 px-6 py-4 mb-8 rounded shadow-lg first:border-t-4 border-slate-300 bg-slate-50 `}>
       {/* CARD CONTENTS */}
       <div className="flex justify-between mb-4">
         {/* TITLE */}
@@ -19,12 +19,13 @@ export default function Recipe(props) {
         {/* EDIT / DELETE BUTTONS */}
         <div className="flex justify-end w-2/5 h-10">
           <div className="flex flex-wrap items-center justify-center h-10 sm:justify-end">
-            <button className="w-20 p-1 m-1 text-sm tracking-wider uppercase transition-all rounded select-none border-slate-300 bg-slate-300 text-slate-50 hover:bg-slate-400">
+            <button className="w-20 p-1 m-1 text-sm tracking-wider uppercase transition-all rounded select-none border-slate-300 bg-slate-300 text-slate-50 hover:bg-slate-400"
+            onClick={() => value.handleRecipeEdit(props.id)}>
               Edit
             </button>
-              <button className="flex items-center justify-center w-8 h-8 p-3 ml-2 font-mono text-sm uppercase transition-all rounded-full select-none hover:bg-slate-200 text-slate-400"
+              <button className="w-8 h-8 ml-4 font-mono leading-tight uppercase transition-all rounded-full select-none hover:bg-slate-200 text-slate-400"
               onClick={ () => value.handleRecipeDelete(props.id)}>
-                X
+                &times;
               </button>
           </div>
         </div>

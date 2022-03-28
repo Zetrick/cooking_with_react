@@ -15,20 +15,18 @@ const LOCAL_STORAGE_KEY = "Cooking_With_React.Recipes";
 
 function App() {
   const [recipes, setRecipes] = useState(sampleRecipes);
+  const [currentRecipeToEdit, setCurrentRecipeToEdit] = useState();
+
 
   useEffect(() => {
-    console.log("All done rendering... calling the [] useEffect");
     const recipesJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (recipesJSON) {
       setRecipes(JSON.parse(recipesJSON));
-      console.log("Setting recipes from Local Storage...");
     }
   }, []);
-
+  
   useEffect(() => {
-    console.log("recipes array changed... Setting Local Storage to: ", recipes);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes));
-    return () => console.log("Recipes set!");
   }, [recipes]);
 
   const handleRecipeAddFunc = () => {
@@ -48,19 +46,39 @@ function App() {
     };
 
     setRecipes([...recipes, newRecipe]);
+    setCurrentRecipeToEdit(newRecipe);
   };
 
   const handleRecipeDeleteFunc = (id_of_recipe) => {
     setRecipes(recipes.filter((recipe) => recipe.id !== id_of_recipe));
+    if(id_of_recipe === currentRecipeToEdit.id)
+      setCurrentRecipeToEdit(null);
   };
+
+  const handleRecipeEdit = (recipe_id) => {
+    setCurrentRecipeToEdit(recipes.find(recipe => recipe.id === recipe_id))
+  }
+
+  const handleRecipeEditClose = () => {
+    setCurrentRecipeToEdit(null);
+  }
+
+  const handleRecipeUpdate = (recipe_id, changes) => {
+    let index = recipes.findIndex((recipe) => recipe.id === recipe_id);
+    let new_arr = [...recipes];
+    new_arr[index] = {...recipes[index], ...changes};
+    setRecipes(new_arr);
+    setCurrentRecipeToEdit(new_arr[index]);
+  }
 
   const recipeContextValue = {
     handleRecipeAdd: handleRecipeAddFunc,
     handleRecipeDelete: handleRecipeDeleteFunc,
+    handleRecipeEdit: handleRecipeEdit
   };
 
   return (
-    <div className="">
+    <div className="relative scroll-smooth">
       {/* FIXED BACKGROUND / ROTATED DIVS */}
       <div className="fixed z-0 flex w-full">
         <Background color="amber" />
@@ -80,9 +98,9 @@ function App() {
         </div>
         {/* EDIT SECTION CONTAINER */}
         {/* RELATIVE PARENT */}
-        <div className="w-1/2 h-screen flex justify-center items-center">
+        <div className="flex w-1/2 h-full justify-center items-center mb-48 sticky top-0">
           {/* FIXED CHILD - RECIPE EDIT */}
-          <RecipeEdit />
+          { currentRecipeToEdit && <RecipeEdit key={uuidv4()} recipe={currentRecipeToEdit} updateFunc={handleRecipeUpdate} closeRecipeEdit={handleRecipeEditClose}/>}
         </div>
       </div>
     </div>
@@ -95,7 +113,11 @@ const sampleRecipes = [
     name: "Plain Chicken with Catchetori Alfredo Sauce",
     servings: 3,
     cookTime: "1:45",
-    instructions: ["Put salt on Chicken", "Put chicken in oven", "Eat the chicken"],
+    instructions: [
+      "Put salt on Chicken",
+      "Put chicken in oven",
+      "Eat the chicken",
+    ],
     ingredients: [
       {
         name: "Chicken",
@@ -133,7 +155,11 @@ const sampleRecipes = [
     name: "Plain Steak",
     servings: 5,
     cookTime: "0:45",
-    instructions: ["Put salt and pepper on Steak", "Put steak on grill", "Eat the steak"],
+    instructions: [
+      "Put salt and pepper on Steak",
+      "Put steak on grill",
+      "Eat the steak",
+    ],
     ingredients: [
       {
         name: "Steak",
